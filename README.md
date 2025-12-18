@@ -97,27 +97,7 @@ Terminal #3:
 ```powershell
 npm run frontend
 ```
-node -e "const fs=require('fs'); const {ethers}=require('ethers'); (async()=>{ const pk=process.env.USER_PRIVATE_KEY; if(!pk) throw new Error('Missing USER_PRIVATE_KEY'); const cfg=JSON.parse(fs.readFileSync('./contracts.json','utf8')); const kycAddr=cfg.contracts.KYCRegistry; const provider=new ethers.JsonRpcProvider(cfg.rpcUrl); const wallet=new ethers.Wallet(pk,provider); const abi=['function requestKYC(bytes32) external']; const kyc=new ethers.Contract(kycAddr,abi,wallet); const h='0x26184cfaab60ff9836e3db568a0598281666c5c8273879c09985496a60997ca7'; const tx=await kyc.requestKYC(h); console.log('tx sent:',tx.hash); await tx.wait(); console.log('✅ requestKYC done'); })().catch(e=>{console.error(e); process.exit(1);});"
 
-
-node -e "fetch('http://localhost:4000/admin/kyc/approve-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({requestId:1,level:1,expiresAt:0})}).then(async r=>{console.log('HTTP',r.status); console.log(await r.text())}).catch(console.error)"
-
-Open:
-- Backend health: http://localhost:4000/health
-- Frontend UI: http://localhost:5173
-
----
-Check nhanh: indexer có thật sự chạy và thấy block mới không?
-
-Trong terminal ở root dự án chạy:
-
-npm --workspace backend run indexer:once
-
-
-node -e "const Database=require('better-sqlite3'); const db=new Database('./data/bankchain.sqlite'); db.exec('DELETE FROM events;'); console.log('✅ cleared events');"
-
-cd backend
-node src/indexer/indexer.js
 
 ## Repo structure
 
