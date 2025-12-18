@@ -1,0 +1,17 @@
+{
+  "name": "bankchain",
+  "private": true,
+  "workspaces": [
+    "contracts",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "chain": "npm --workspace contracts run chain",
+    "compile": "npm --workspace contracts run compile",
+    "test": "npm --workspace contracts run test",
+    "deploy:local": "npm --workspace contracts run deploy:local && npm --workspace backend run db:migrate && npm --workspace backend run indexer:once",
+    "backend": "npm --workspace backend run dev",
+    "frontend": "npm --workspace frontend run dev"
+  }
+}

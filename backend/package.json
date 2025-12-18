@@ -1,0 +1,22 @@
+{
+  "name": "@bankchain/backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "db:migrate": "node src/db/migrate.js",
+    "indexer": "node src/indexer/indexer.js",
+    "indexer:once": "node src/indexer/indexer.js --once",
+    "indexer:watch": "node src/indexer/indexer.js --watch"
+
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.4",
+    "express": "^4.19.2",
+    "zod": "^3.23.8"
+  }
+}

@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+.env
+backend/data
+contracts/artifacts
+contracts/cache
+contracts/typechain-types
+dist
+build
+contracts.json
